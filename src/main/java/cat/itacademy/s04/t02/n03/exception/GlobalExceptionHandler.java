@@ -10,8 +10,8 @@ import org.springframework.web.servlet.resource.NoResourceFoundException;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<String> handleDataIntegrityViolation(DataIntegrityViolationException ex){
+    @ExceptionHandler(FruitAlreadyExistsException.class)
+    public ResponseEntity<String> handleDataIntegrityViolation(FruitAlreadyExistsException ex){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
     }
 

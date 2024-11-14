@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 public class FruitController {
 
-    FruitService fruitService;
+    private final FruitService fruitService;
 
     public FruitController(FruitService fruitService) {
         this.fruitService = fruitService;
@@ -38,14 +38,14 @@ public class FruitController {
     }
 
     @GetMapping("/getOne/{id}")
-    public Fruit getFruit(@PathVariable String id){
-        return fruitService.getFruitById(id);
+    public ResponseEntity<Fruit> getFruit(@PathVariable String id){
+        return ResponseEntity.ok(fruitService.getFruitById(id));
     }
 
     @ResponseBody
     @GetMapping("/getAll")
-    public List<Fruit> getAllFruits(){
-        return fruitService.getAllFruits();
+    public ResponseEntity<List<Fruit>> getAllFruits(){
+        return ResponseEntity.ok(fruitService.getAllFruits());
     }
 
 }
